@@ -1,5 +1,6 @@
 import { MainLayout } from "@/src/shared/Layouts/MainLayout";
 import InsuranceButton from "@/src/shared/components/button/InsuranceButton";
+import { ROUTES } from "@/src/shared/constants/routes";
 import { Box, Container, Stack, Typography } from "@mui/material";
 import { NextPage } from "next";
 import Head from "next/head";
@@ -33,7 +34,7 @@ const InsurancePage: NextPage = () => {
                 spacing={2}
                 width="100%"
               >
-                <InsuranceButton title={"شخص ثالث"} active={true} href="/" />
+                <InsuranceButton title={"شخص ثالث"} active={true} href={ROUTES.THIRD_PARTY} />
                 <InsuranceButton title={"بدنه"} active={false} href="/" />
               </Stack>
             </Box>

@@ -17,6 +17,11 @@ declare module "@mui/material/styles" {
 }
 
 const theme = createTheme({
+  palette: {
+primary: {
+  main: "#25b79b"
+}
+  },
   status: {
     danger: orange[500],
   },

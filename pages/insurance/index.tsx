@@ -1,1 +1,1 @@
-export { default } from "modules/insurance/InsurancePage"
+export { default } from "modules/insurance/InsurancePage";

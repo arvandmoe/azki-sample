@@ -18,6 +18,7 @@ export function MainLayout(props: MainLayoutProps) {
       justifyContent="space-between"
       alignItems="center"
       height="100vh"
+      overflow="hidden"
     >
       <Stack
         display="flex"
@@ -26,20 +27,25 @@ export function MainLayout(props: MainLayoutProps) {
         width="100%"
         height="100%"
       >
-        <Navbar />
-        <Box bgcolor="white" sx={{ flexGrow: 3 }}>
-          {children}
-        </Box>
-        <Box bgcolor="#fffbeb" sx={{ flexGrow: 1 }}></Box>
+        <Box
+          bgcolor="#fffbeb"
+          position="absolute"
+          left={0}
+          top={{ xs: "75%", md: 0 }}
+          bottom={0}
+          right={{ xs: 0, md: "75%" }}
+        ></Box>
         <Box
           position="absolute"
-          bottom="10%"
-          left="0%"
+          bottom={{ xs: "10%", sm: "5%" }}
+          left="5%"
           height="35%"
-          width="45%"
+          width={{ xs: "65%", sm: "45%" }}
         >
           <Image alt="Azki Car Insurance" src={GreenCarImage.src} fill />
         </Box>
+        <Navbar />
+        {children}
       </Stack>
     </Box>
   );

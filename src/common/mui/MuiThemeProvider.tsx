@@ -20,6 +20,30 @@ const theme = createTheme({
   status: {
     danger: orange[500],
   },
+
+  components: {
+    MuiContainer: {
+      styleOverrides: {
+        root: {
+          maxWidth: "1440px",
+        },
+        maxWidthMd: {
+          maxWidth: 320,
+        },
+        maxWidthLg: {
+          maxWidth: "1440px!important",
+        },
+      },
+    },
+  },
+  typography: {
+    fontFamily: [
+      'var(--font-iranSans)'
+    ].join(','),
+    h1: {
+      fontSize: "18px",
+    },
+  },
 });
 
 interface MuiThemeProviderProps {

@@ -1,21 +1,25 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import { Card } from 'shared/components'
+import { MainLayout } from "@/src/shared/Layouts/MainLayout";
+import { Box } from "@mui/material";
+import { NextPage } from "next";
+import { Inter } from "next/font/google";
+import Head from "next/head";
 
-const Login: NextPage = () => {
+const inter = Inter({ subsets: ["latin"] });
+
+const LoginPage: NextPage = () => {
   return (
-    <div>
+    <>
       <Head>
-        <title>ورود - ازگی</title>
-        <meta name="description" content="Login to azki" />
+        <title>ورود - ازکی</title>
+        <meta name="description" content="Azki Sample" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <main>
-
+      <main className={`$${inter.className}`}>
+        <MainLayout>LoginPage</MainLayout>
       </main>
-    </div>
-  )
-}
+    </>
+  );
+};
 
-export default Login
+export default LoginPage;

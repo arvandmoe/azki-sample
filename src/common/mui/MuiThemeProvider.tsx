@@ -20,7 +20,6 @@ const theme = createTheme({
   status: {
     danger: orange[500],
   },
-
   components: {
     MuiContainer: {
       styleOverrides: {
@@ -36,10 +35,9 @@ const theme = createTheme({
       },
     },
   },
+  direction: "rtl",
   typography: {
-    fontFamily: [
-      'var(--font-iranSans)'
-    ].join(','),
+    fontFamily: ["var(--font-iranSans)"].join(","),
     h1: {
       fontSize: "18px",
     },

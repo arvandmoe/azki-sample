@@ -16,14 +16,15 @@ const Navbar = () => {
           width="100%"
         >
           <Image alt="azki-logo" src={LogoIcon.src} height={32} width={32} />
-          <Typography fontWeight="bold" sx={{ visibility: { xs: "hidden", sm: "visible" }}}>
+          <Typography
+            fontWeight="bold"
+            sx={{ visibility: { xs: "hidden", sm: "visible" } }}
+          >
             {"سامانه مقایسه و خرید آنلاین بیمه "}
           </Typography>
-          <Stack direction="row" alignItems="center">
+          <Stack direction="row" alignItems="center" spacing={1}>
             <Image alt="user-area" src={UserIcon.src} height={32} width={32} />
-            <Typography paddingRight={1} fontWeight="bold">
-              {"جان دو"}
-            </Typography>
+            <Typography fontWeight="bold">{"جان دو"}</Typography>
           </Stack>
         </Stack>
       </Container>

@@ -26,11 +26,15 @@ const InsurancePage: NextPage = () => {
               >
                 {"انتخاب بیمه"}
               </Typography>
-              <Stack display="flex" direction="row" marginTop={{ xs: 2, sm: 4 }} width="100%">
+              <Stack
+                display="flex"
+                direction="row"
+                marginTop={{ xs: 2, sm: 4 }}
+                spacing={2}
+                width="100%"
+              >
                 <InsuranceButton title={"شخص ثالث"} active={true} href="/" />
-                <Box mr={2}>
-                  <InsuranceButton title={"بدنه"} active={false} href="/" />
-                </Box>
+                <InsuranceButton title={"بدنه"} active={false} href="/" />
               </Stack>
             </Box>
           </Container>

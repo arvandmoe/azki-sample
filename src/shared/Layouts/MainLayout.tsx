@@ -30,15 +30,15 @@ export function MainLayout(props: MainLayoutProps) {
         <Box
           bgcolor="#fffbeb"
           position="absolute"
-          left={0}
+          right={0}
           top={{ xs: "75%", md: 0 }}
           bottom={0}
-          right={{ xs: 0, md: "75%" }}
+          left={{ xs: 0, md: "75%" }}
         ></Box>
         <Box
           position="absolute"
           bottom={{ xs: "10%", sm: "5%" }}
-          left="5%"
+          right="5%"
           height="35%"
           width={{ xs: "65%", sm: "45%" }}
         >

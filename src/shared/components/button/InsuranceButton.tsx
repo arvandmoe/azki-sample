@@ -14,7 +14,7 @@ interface InsuranceButtonProps {
 const InsuranceButton = (props: InsuranceButtonProps) => {
   const { title, active, href } = props;
   return (
-    <Box component={Link} href={href}>
+    <Box component={active ? Link : "div"} href={href}>
       <Button
         disabled={!active}
         sx={[

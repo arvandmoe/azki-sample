@@ -1,7 +1,6 @@
 import SubmitButton from "@/src/shared/components/button/SubmitButton";
 import { ROUTES } from "@/src/shared/constants/routes";
 import { login } from "@/src/shared/redux/slices/userSlice";
-import { RootState } from "@/src/shared/redux/store";
 import { LoginFormData } from "@/src/shared/types/User";
 import { loginSchema } from "@/src/shared/validations/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -9,7 +8,7 @@ import { Grid, Stack, TextField } from "@mui/material";
 import { useRouter } from "next/router";
 import React from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const LoginForm: React.FC = () => {
   const dispatch = useDispatch();

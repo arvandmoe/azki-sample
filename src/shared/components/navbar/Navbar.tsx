@@ -3,8 +3,16 @@ import React from "react";
 import UserIcon from "assets/user.svg";
 import LogoIcon from "assets/logo.svg";
 import Image from "next/image";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
+import Link from "next/link";
+import { ROUTES } from "../../constants/routes";
 
 const Navbar = () => {
+  const userState = useSelector((state: RootState) => state.user);
+  const authenticated = !!userState.data;
+  const name = userState.data?.firstName + " " + userState.data?.lastName;
+
   return (
     <Box position="absolute" top={18} width="100%">
       <Container>
@@ -22,10 +30,25 @@ const Navbar = () => {
           >
             {"سامانه مقایسه و خرید آنلاین بیمه "}
           </Typography>
-          <Stack direction="row" alignItems="center" spacing={1}>
-            <Image alt="user-area" src={UserIcon.src} height={32} width={32} />
-            <Typography fontWeight="bold">{"جان دو"}</Typography>
-          </Stack>
+          {authenticated ? (
+            <Stack direction="row" alignItems="center" spacing={1}>
+              <Image
+                alt="user-area"
+                src={UserIcon.src}
+                height={32}
+                width={32}
+              />
+              <Typography fontWeight="bold">{name}</Typography>
+            </Stack>
+          ) : (
+            <Box
+              component={Link}
+              href={ROUTES.HOME}
+              sx={{ textDecoration: "none" }}
+            >
+              <Typography fontWeight="bold">{"ثبت نام"}</Typography>
+            </Box>
+          )}
         </Stack>
       </Container>
     </Box>

@@ -1,20 +1,25 @@
 import SubmitButton from "@/src/shared/components/button/SubmitButton";
+import { ROUTES } from "@/src/shared/constants/routes";
+import { login } from "@/src/shared/redux/slices/userSlice";
+import { RootState } from "@/src/shared/redux/store";
+import { LoginFormData } from "@/src/shared/types/User";
 import { loginSchema } from "@/src/shared/validations/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Grid, Stack, TextField } from "@mui/material";
+import { useRouter } from "next/router";
 import React from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
-
-interface LoginFormData {
-  firstName: string;
-  lastName: string;
-  phoneNumber: string;
-  password: string;
-}
+import { useDispatch, useSelector } from "react-redux";
 
 const LoginForm: React.FC = () => {
+  const dispatch = useDispatch();
+  const router = useRouter();
+
   const defaultValues = {
     firstName: "",
+    lastName: "",
+    phoneNumber: "",
+    password: "",
   };
 
   const form = useForm<LoginFormData>({
@@ -28,7 +33,8 @@ const LoginForm: React.FC = () => {
   } = form;
 
   const onSubmit: SubmitHandler<LoginFormData> = (data) => {
-    console.log(data);
+    dispatch(login(form.getValues()));
+    router.replace(ROUTES.INSURANCE);
   };
 
   return (

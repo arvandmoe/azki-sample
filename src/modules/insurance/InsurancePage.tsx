@@ -16,7 +16,7 @@ const InsurancePage: NextPage = () => {
         <MainLayout>
           <Container>
             <Box
-              paddingRight={{ xs: 0, sm: 16 }}
+              mx={{ xs: 0, md: 8 }}
               paddingTop={{ xs: 10, sm: 12 }}
               width="100%"
             >

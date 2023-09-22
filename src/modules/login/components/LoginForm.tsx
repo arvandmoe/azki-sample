@@ -1,4 +1,4 @@
-import SubmitButton from "@/src/shared/components/button/SubmitButton";
+import ContainedButton from "@/src/shared/components/button/ContainedButton";
 import { ROUTES } from "@/src/shared/constants/routes";
 import { login } from "@/src/shared/redux/slices/userSlice";
 import { LoginFormData } from "@/src/shared/types/User";
@@ -113,7 +113,7 @@ const LoginForm: React.FC = () => {
             justifyContent={{ xs: "center", sm: "end" }}
             width="100%"
           >
-            <SubmitButton title={"ثبت نام"} />
+            <ContainedButton type="submit" title={"ثبت نام"} />
           </Stack>
         </Grid>
       </Grid>

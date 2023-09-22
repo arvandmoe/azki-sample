@@ -5,8 +5,14 @@ import { Box, Container, Grid, Stack, Typography } from "@mui/material";
 import { NextPage } from "next";
 import Head from "next/head";
 import ChooseCarStep from "./components/ChooseCarStep";
+import { useSelector } from "react-redux";
+import { RootState } from "@/src/shared/redux/store";
+import PrevCompanyStep from "./components/PrevCompanyStep";
+import OffPercentStep from "./components/OffPercentStep";
 
 const ThirdPartyPage: NextPage = () => {
+  const insuranceState = useSelector((state: RootState) => state.insurance);
+
   return (
     <>
       <Head>
@@ -29,7 +35,9 @@ const ThirdPartyPage: NextPage = () => {
                 {"بیمه شخص ثالث"}
               </Typography>
               <Box pt={4}/>
-              <ChooseCarStep />
+              {insuranceState.step === 'ChooseCarStep' ? <ChooseCarStep />: null}
+              {insuranceState.step === 'PrevCompanyStep' ? <PrevCompanyStep />: null}
+              {insuranceState.step === 'OffPercentStep' ? <OffPercentStep />: null}
               <Stack
                 display="flex"
                 direction="row"

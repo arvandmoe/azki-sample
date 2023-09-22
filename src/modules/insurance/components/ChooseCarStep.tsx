@@ -15,8 +15,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import StepButton from "@/src/shared/components/button/StepButton";
 import { useQuery } from "@tanstack/react-query";
 import AzkiService from "@/src/shared/services/azki-service";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/src/shared/redux/store";
+import { useRouter } from "next/router";
+import { ROUTES } from "@/src/shared/constants/routes";
+import { goToPrevCompanyStep } from "../store/insuranceSlice";
 
-interface FormValues {
+export interface ChooseCarStepFormValues {
   carType: string;
   carModel: string;
 }
@@ -27,35 +32,45 @@ const schema = z.object({
 });
 
 const ChooseCarStep = () => {
+  const dispatch = useDispatch();
+  const router = useRouter();
+
+  const insuranceState = useSelector((state: RootState) => state.insurance);
+
   const { data } = useQuery({
     queryKey: ["getVehicleTypes"],
     queryFn: AzkiService.getVehicleTypes,
   });
 
-  console.log(data);
   const defaultValues = {
     carType: "",
     carModel: "",
   };
 
   const {
-    register,
     getValues,
     watch,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
     control,
-  } = useForm<FormValues>({
+  } = useForm<ChooseCarStepFormValues>({
     defaultValues: defaultValues,
     resolver: zodResolver(schema),
   });
 
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
-    // Handle form submission
-    console.log("Form data:", data);
+  const onSubmit: SubmitHandler<ChooseCarStepFormValues> = (data) => {
+    onNextClick()
   };
 
-  console.log(data?.data && data?.data?.find);
+  const onBackClick = () => {
+    router.replace(ROUTES.INSURANCE);
+  };
+
+  const onNextClick = () => {
+    if (isValid) {
+      dispatch(goToPrevCompanyStep(getValues()));
+    }
+  };
 
   return (
     <div>
@@ -93,7 +108,7 @@ const ChooseCarStep = () => {
                         })}
                     </Select>
                     {errors.carType && (
-                      <Typography color="error">
+                      <Typography color="error" mt={1}>
                         {errors.carType
                           ? (errors.carType.message as string)
                           : ""}
@@ -129,7 +144,7 @@ const ChooseCarStep = () => {
                           })}
                     </Select>
                     {errors.carModel && (
-                      <Typography color="error">
+                      <Typography color="error" mt={1}>
                         {errors.carModel
                           ? (errors.carModel.message as string)
                           : ""}
@@ -141,7 +156,7 @@ const ChooseCarStep = () => {
             </Grid>
           </Grid>
           <Stack direction="row" justifyContent="space-between" pt={4}>
-            <StepButton type="back" />
+            <StepButton type="back" onClick={onBackClick} />
             <StepButton type="next" />
           </Stack>
         </form>

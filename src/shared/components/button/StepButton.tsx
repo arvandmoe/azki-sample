@@ -5,16 +5,18 @@ import ArrowReversed from "assets/arrow-reversed.png";
 import Image from "next/image";
 
 interface StepButtonProps {
-  type: "back" | "previous" | "next";
+  type: "back" | "prev" | "next";
+  onClick?: () => void;
 }
 
 const StepButton = (props: StepButtonProps) => {
-  const { type } = props;
+  const { type, onClick } = props;
   const isNext = type === "next";
   return (
     <Button
       variant="outlined"
       type={isNext ? "submit" : "button"}
+      onClick={onClick}
       endIcon={
         isNext ? <Image src={Arrow.src} alt="" width={12} height={12} /> : null
       }
@@ -32,7 +34,7 @@ const StepButton = (props: StepButtonProps) => {
       }}
     >
       {isNext ? "مرحله بعد" : null}
-      {type === "previous" ? "مرحله قبل" : null}
+      {type === "prev" ? "مرحله قبل" : null}
       {type === "back" ? "بازگشت" : null}
     </Button>
   );

@@ -8,7 +8,7 @@ export interface UserSliceType {
 export const initialState: UserSliceType = { data: undefined }
 
 const userSlice = createSlice({
-    name: 'todo',
+    name: 'user',
     initialState: initialState,
     reducers: {
         login(state, action: PayloadAction<User>) {
